@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="BillCraft - Professional invoice generator for freelancers and small businesses">
+
+    <title>BillCraft | Invoice Management</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="mobile-header">
+
+        <div class="brand">
+            <div class="brand-icon">I</div>
+
+            <div>
+                <h2>BillCraft</h2>
+                <span>Invoice Manager</span>
+            </div>
+        </div>
+
+        <button class="menu-btn" id="menuBtn">
+            ☰
+        </button>
+
+    </header>
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-brand">
+
+            <div class="brand-icon">I</div>
+
+            <div>
+                <h2>BillCraft</h2>
+                <span>Invoice Manager</span>
+            </div>
+
+        </div>
+
+
+        <nav class="navigation">
+
+            <button
+                class="nav-item active"
+                data-page="dashboard">
+
+                <span>▦</span>
+                Dashboard
+
+            </button>
+
+
+            <button
+                class="nav-item"
+                data-page="create">
+
+                <span>＋</span>
+                Create Invoice
+
+            </button>
+
+
+            <button
+                class="nav-item"
+                data-page="invoices">
+
+                <span>▤</span>
+                Invoices
+
+            </button>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <div class="sidebar-help">
+
+                <span>💡</span>
+
+                <div>
+                    <strong>Quick Tip</strong>
+
+                    <p>
+                        Keep your invoices organized and professional.
+                    </p>
+                </div>
+
+            </div>
+
+            <p class="version">
+                InvoicePro v1.0
+            </p>
+
+        </div>
+
+    </aside>
+
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <div>
+                <p class="breadcrumb">
+                    Invoice Management
+                </p>
+
+                <h1 id="pageTitle">
+                    Dashboard
+                </h1>
+            </div>
+
+
+            <button
+                class="primary-btn"
+                id="topNewInvoice">
+
+                + New Invoice
+
+            </button>
+
+        </header>
+
+        <section
+            class="page active-page"
+            id="dashboardPage">
+
+
+            <div class="welcome-card">
+
+                <div>
+
+                    <span class="welcome-label">
+                        Welcome back 👋
+                    </span>
+
+                    <h2>
+                        Manage your invoices with ease.
+                    </h2>
+
+                    <p>
+                        Create professional invoices,
+                        track payments and keep your
+                        freelance business organized.
+                    </p>
+
+                    <button
+                        class="primary-btn"
+                        id="dashboardCreateBtn">
+
+                        Create New Invoice
+
+                    </button>
+
+                </div>
+
+
+                <div class="welcome-icon">
+                    ₹
+                </div>
+
+            </div>
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon purple">
+                        ₹
+                    </div>
+
+                    <div>
+                        <span>Total Revenue</span>
+
+                        <h3 id="totalRevenue">
+                            ₹0.00
+                        </h3>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon green">
+                        ✓
+                    </div>
+
+                    <div>
+                        <span>Paid</span>
+
+                        <h3 id="paidAmount">
+                            ₹0.00
+                        </h3>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon orange">
+                        ◷
+                    </div>
+
+                    <div>
+                        <span>Pending</span>
+
+                        <h3 id="pendingAmount">
+                            ₹0.00
+                        </h3>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon red">
+                        !
+                    </div>
+
+                    <div>
+                        <span>Overdue</span>
+
+                        <h3 id="overdueAmount">
+                            ₹0.00
+                        </h3>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- RECENT INVOICES -->
+
+            <div class="content-card">
+
+                <div class="card-heading">
+
+                    <div>
+                        <h2>Recent Invoices</h2>
+
+                        <p>
+                            Your latest invoice activity
+                        </p>
+                    </div>
+
+                    <button
+                        class="text-btn"
+                        id="viewAllBtn">
+
+                        View All →
+
+                    </button>
+
+                </div>
+
+
+                <div
+                    class="invoice-table-container">
+
+                    <table class="invoice-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Invoice</th>
+                                <th>Client</th>
+                                <th>Date</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                <th>Action</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody
+                            id="recentInvoices">
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section
+            class="page"
+            id="createPage">
+
+
+            <div class="create-layout">
+
+
+                <div class="editor-area">
+
+
+                    <div class="content-card">
+
+                        <div class="card-heading">
+
+                            <div>
+
+                                <h2>Invoice Details</h2>
+
+                                <p>
+                                    Basic information about your invoice.
+                                </p>
+
+                            </div>
+
+                            <span class="step-number">
+                                01
+                            </span>
+
+                        </div>
+
+
+                        <div class="form-grid">
+
+                            <div class="input-group">
+
+                                <label>
+                                    Invoice Number
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="invoiceNumber"
+                                    placeholder="INV-2026-001">
+
+                            </div>
+
+
+                            <div class="input-group">
+
+                                <label>
+                                    Status
+                                </label>
+
+                                <select id="invoiceStatus">
+
+                                    <option value="Pending">
+                                        Pending
+                                    </option>
+
+                                    <option value="Paid">
+                                        Paid
+                                    </option>
+
+                                    <option value="Overdue">
+                                        Overdue
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="input-group">
+
+                                <label>
+                                    Invoice Date
+                                </label>
+
+                                <input
+                                    type="date"
+                                    id="invoiceDate">
+
+                            </div>
+
+
+                            <div class="input-group">
+
+                                <label>
+                                    Due Date
+                                </label>
+
+                                <input
+                                    type="date"
+                                    id="dueDate">
+
+                            </div>
+
+
+                            <div class="input-group">
+
+                                <label>
+                                    Currency
+                                </label>
+
+                                <select id="currency">
+
+                                    <option value="INR">
+                                        INR ₹ - Indian Rupee
+                                    </option>
+
+                                    <option value="USD">
+                                        USD $ - US Dollar
+                                    </option>
+
+                                    <option value="EUR">
+                                        EUR € - Euro
+                                    </option>
+
+                                    <option value="GBP">
+                                        GBP £ - Pound
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="content-card">
+
+                        <div class="card-heading">
+
+                            <div>
+
+                                <h2>Your Information</h2>
+
+                                <p>
+                                    Information about you or your business.
+                                </p>
+
+                            </div>
+
+                            <span class="step-number">
+                                02
+                            </span>
+
+                        </div>
+
+
+                        <div class="logo-upload-area">
+
+                            <div
+                                class="logo-preview"
+                                id="logoPreview">
+
+                                <span>+</span>
+
+                            </div>
+
+
+                            <div>
+
+                                <label class="upload-btn">
+
+                                    Upload Logo
+
+                                    <input
+                                        type="file"
+                                        id="logoInput"
+                                        accept="image/*"
+                                        hidden>
+
+                                </label>
+
+                                <p>
+                                    PNG, JPG or WEBP.
+                                    Recommended 300 × 300px.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-grid">
+
+                            <div class="input-group">
+
+                                <label>Your Name</label>
+
+                                <input
+                                    type="text"
+                                    id="yourName"
+                                    placeholder="Enter Your Name">
+
+                            </div>
+
+
+                            <div class="input-group">
+
+                                <label>Business / Brand</label>
+
+                                <input
+                                    type="text"
+                                    id="businessName"
+                                    placeholder="Web Studio">
+
+                            </div>
+
+
+                            <div class="input-group">
+
+                                <label>Email</label>
+
+                                <input
+                                    type="email"
+                                    id="yourEmail"
+                                    placeholder="hello@example.com">
+
+                            </div>
+
+
+                            <div class="input-group">
+
+                                <label>Phone</label>
+
+                                <input
+                                    type="text"
+                                    id="yourPhone"
+                                    placeholder="+91 ">
+
+                            </div>
+
+
+                            <div
+                                class="input-group full-width">
+
+                                <label>Address</label>
+
+                                <textarea
+                                    id="yourAddress"
+                                    placeholder="Your business address"></textarea>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="content-card">
+
+                        <div class="card-heading">
+
+                            <div>
+
+                                <h2>Client Information</h2>
+
+                                <p>
+                                    Who is this invoice for?
+                                </p>
+
+                            </div>
+
+                            <span class="step-number">
+                                03
+                            </span>
+
+                        </div>
+
+
+                        <div class="form-grid">
+
+                            <div class="input-group">
+
+                                <label>Client Name</label>
+
+                                <input
+                                    type="text"
+                                    id="clientName"
+                                    placeholder="Enter Client Name">
+
+                            </div>
+
+
+                            <div class="input-group">
+
+                                <label>Company</label>
+
+                                <input
+                                    type="text"
+                                    id="clientCompany"
+                                    placeholder="ABC Studio">
+
+                            </div>
+
+
+                            <div class="input-group">
+
+                                <label>Email</label>
+
+                                <input
+                                    type="email"
+                                    id="clientEmail"
+                                    placeholder="client@example.com">
+
+                            </div>
+
+
+                            <div class="input-group">
+
+                                <label>Phone</label>
+
+                                <input
+                                    type="text"
+                                    id="clientPhone"
+                                    placeholder="+91 ">
+
+                            </div>
+
+
+                            <div
+                                class="input-group full-width">
+
+                                <label>Address</label>
+
+                                <textarea
+                                    id="clientAddress"
+                                    placeholder="Client address"></textarea>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="content-card">
+
+                        <div class="card-heading">
+
+                            <div>
+
+                                <h2>Services & Items</h2>
+
+                                <p>
+                                    Add the products or services you provided.
+                                </p>
+
+                            </div>
+
+                            <span class="step-number">
+                                04
+                            </span>
+
+                        </div>
+
+
+                        <div class="items-header">
+
+                            <span>Description</span>
+                            <span>Qty</span>
+                            <span>Rate</span>
+                            <span>Amount</span>
+                            <span></span>
+
+                        </div>
+
+
+                        <div id="itemsContainer"></div>
+
+
+                        <button
+                            class="add-item-btn"
+                            id="addItemBtn">
+
+                            + Add Service
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="content-card">
+
+                        <div class="card-heading">
+
+                            <div>
+
+                                <h2>Tax & Discount</h2>
+
+                                <p>
+                                    Adjust your invoice totals.
+                                </p>
+
+                            </div>
+
+                            <span class="step-number">
+                                05
+                            </span>
+
+                        </div>
+
+
+                        <div class="form-grid">
+
+                            <div class="input-group">
+
+                                <label>
+                                    Tax (%)
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="tax"
+                                    value="18"
+                                    min="0">
+
+                            </div>
+
+
+                            <div class="input-group">
+
+                                <label>
+                                    Discount (%)
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="discount"
+                                    value="0"
+                                    min="0">
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="content-card">
+
+                        <div class="card-heading">
+
+                            <div>
+
+                                <h2>Notes & Payment Terms</h2>
+
+                                <p>
+                                    Add any additional information.
+                                </p>
+
+                            </div>
+
+                            <span class="step-number">
+                                06
+                            </span>
+
+                        </div>
+
+
+                        <div class="input-group">
+
+                            <label>Notes</label>
+
+                            <textarea
+                                id="notes"
+                                placeholder="Thank you for your business!"></textarea>
+
+                        </div>
+
+
+                        <br>
+
+
+                        <div class="input-group">
+
+                            <label>
+                                Payment Terms
+                            </label>
+
+                            <textarea
+                                id="paymentTerms"
+                                placeholder="Payment is due within 10 days."></textarea>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-actions">
+
+                        <button
+                            class="secondary-btn"
+                            id="cancelBtn">
+
+                            Cancel
+
+                        </button>
+
+
+                        <button
+                            class="primary-btn"
+                            id="saveInvoiceBtn">
+
+                            Save Invoice
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="preview-area">
+
+                    <div class="preview-heading">
+
+                        <span>
+                            LIVE PREVIEW
+                        </span>
+
+                        <button
+                            class="print-small-btn"
+                            id="printBtn">
+
+                            🖨 Print
+
+                        </button>
+
+                    </div>
+
+
+                    <div
+                        class="invoice-paper"
+                        id="invoicePreview">
+
+
+                        <div class="invoice-top">
+
+                            <div>
+
+                                <div
+                                    class="invoice-logo"
+                                    id="invoiceLogo">
+
+                                    I
+
+                                </div>
+
+                                <h2
+                                    id="previewBusiness">
+
+                                    Your Business
+
+                                </h2>
+
+                                <p
+                                    id="previewYourName">
+
+                                    Your Name
+
+                                </p>
+
+                            </div>
+
+
+                            <div class="invoice-heading">
+
+                                <h1>INVOICE</h1>
+
+                                <span
+                                    id="previewInvoiceNumber">
+
+                                    INV-2026-001
+
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="invoice-divider"></div>
+
+
+                        <div class="invoice-info">
+
+                            <div>
+
+                                <span>Issue Date</span>
+
+                                <strong
+                                    id="previewInvoiceDate">
+
+                                    —
+
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>Due Date</span>
+
+                                <strong
+                                    id="previewDueDate">
+
+                                    —
+
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>Status</span>
+
+                                <strong
+                                    class="status-badge"
+                                    id="previewStatus">
+
+                                    Pending
+
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                        <div class="billing-grid">
+
+                            <div>
+
+                                <span class="label">
+                                    FROM
+                                </span>
+
+                                <h3
+                                    id="previewFromName">
+
+                                    Your Name
+
+                                </h3>
+
+                                <p
+                                    id="previewFromBusiness">
+
+                                    Your Business
+
+                                </p>
+
+                                <p
+                                    id="previewFromEmail">
+
+                                    your@email.com
+
+                                </p>
+
+                                <p
+                                    id="previewFromPhone">
+
+                                    —
+
+                                </p>
+
+                                <p
+                                    id="previewFromAddress">
+
+                                    —
+
+                                </p>
+
+                            </div>
+
+
+                            <div>
+
+                                <span class="label">
+                                    BILL TO
+                                </span>
+
+                                <h3
+                                    id="previewClientName">
+
+                                    Client Name
+
+                                </h3>
+
+                                <p
+                                    id="previewClientCompany">
+
+                                    Client Company
+
+                                </p>
+
+                                <p
+                                    id="previewClientEmail">
+
+                                    client@email.com
+
+                                </p>
+
+                                <p
+                                    id="previewClientPhone">
+
+                                    —
+
+                                </p>
+
+                                <p
+                                    id="previewClientAddress">
+
+                                    —
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <div class="preview-items">
+
+                            <div class="preview-items-header">
+
+                                <span>Description</span>
+                                <span>Qty</span>
+                                <span>Rate</span>
+                                <span>Amount</span>
+
+                            </div>
+
+
+                            <div
+                                id="previewItems">
+
+                            </div>
+
+                        </div>
+
+                        <div class="totals">
+
+                            <div class="total-row">
+
+                                <span>
+                                    Subtotal
+                                </span>
+
+                                <strong
+                                    id="previewSubtotal">
+
+                                    ₹0.00
+
+                                </strong>
+
+                            </div>
+
+
+                            <div class="total-row">
+
+                                <span>
+                                    Tax
+                                    (<span
+                                        id="previewTaxPercent">
+                                        18
+                                    </span>%)
+                                </span>
+
+                                <strong
+                                    id="previewTax">
+
+                                    ₹0.00
+
+                                </strong>
+
+                            </div>
+
+
+                            <div class="total-row">
+
+                                <span>
+                                    Discount
+                                    (<span
+                                        id="previewDiscountPercent">
+                                        0
+                                    </span>%)
+                                </span>
+
+                                <strong
+                                    id="previewDiscount">
+
+                                    ₹0.00
+
+                                </strong>
+
+                            </div>
+
+
+                            <div class="grand-total">
+
+                                <span>
+                                    Total
+                                </span>
+
+                                <strong
+                                    id="previewTotal">
+
+                                    ₹0.00
+
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                        <div class="invoice-notes">
+
+                            <div>
+
+                                <h4>Notes</h4>
+
+                                <p
+                                    id="previewNotes">
+
+                                    Thank you for your business!
+
+                                </p>
+
+                            </div>
+
+
+                            <div>
+
+                                <h4>
+                                    Payment Terms
+                                </h4>
+
+                                <p
+                                    id="previewPaymentTerms">
+
+                                    Payment is due within 10 days.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="invoice-thankyou">
+
+                            Thank you for your business!
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section
+            class="page"
+            id="invoicesPage">
+
+
+            <div class="content-card">
+
+                <div class="card-heading">
+
+                    <div>
+
+                        <h2>All Invoices</h2>
+
+                        <p>
+                            Search and manage your invoices.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        class="primary-btn"
+                        id="invoicePageCreateBtn">
+
+                        + New Invoice
+
+                    </button>
+
+                </div>
+
+
+                <div class="search-area">
+
+                    <input
+                        type="search"
+                        id="searchInvoice"
+                        placeholder="Search by invoice number or client name...">
+
+                </div>
+
+
+                <div class="invoice-table-container">
+
+                    <table class="invoice-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Invoice</th>
+                                <th>Client</th>
+                                <th>Date</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody
+                            id="allInvoices">
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+    <div
+        class="toast"
+        id="toast">
+
+        Invoice saved successfully!
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
